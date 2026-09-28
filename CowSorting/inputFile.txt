@@ -1,0 +1,17 @@
+# Testdatei
+
+Milka;lila;4;
+Paula;weiss;6;
+
+Conny;schwarz;4;
+Berta;weiss;7;
+
+Falsch;lila;abc;
+
+Mathias;rosa;4;
+Milka;rosa;4;
+
+Falsch;lila;
+
+Milka;lila;5;
+
