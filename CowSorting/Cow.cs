@@ -1,4 +1,5 @@
 ﻿namespace CowSorting;
+using System;
 
 public class Cow : IEquatable<Cow>, IComparable<Cow>
 {
@@ -18,33 +19,40 @@ public class Cow : IEquatable<Cow>, IComparable<Cow>
         if (other == null)
             return false;
 
-        return Name == other.Name && Colour == other.Colour && Age == other.Age;
+        return Name == other.Name &&
+               Colour == other.Colour &&
+               Age == other.Age;
     }
-    public override bool Equals(object c)
-    {
-        Cow other = c as Cow;
 
-        return other != null && Name == other.Name && Colour == other.Colour && Age == other.Age;
+    public override bool Equals(object obj)
+    {
+        return Equals(obj as Cow);
     }
+
     public override int GetHashCode()
     {
-        return Name.GetHashCode() + Colour.GetHashCode() + Age.GetHashCode();
+        return (Name + Colour + Age).GetHashCode();
     }
-    
+
     public int CompareTo(Cow other)
     {
-        int x = Name.CompareTo(other.Name);
+        int result = Name.CompareTo(other.Name);
 
-        if (x == 0)
+        if (result == 0)
         {
-            x = Colour.CompareTo(other.Colour);
+            result = Colour.CompareTo(other.Colour);
 
-            if (x == 0)
+            if (result == 0)
             {
-                x = other.Age.CompareTo(Age);
+                result = other.Age.CompareTo(Age);
             }
         }
 
-        return x;
+        return result;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name}, {Colour}, {Age}";
     }
 }
